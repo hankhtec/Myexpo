@@ -5,6 +5,8 @@ import logo from './assets/location-icon.png';
 import * as ImagePicker from 'expo-image-picker';
 import {Ionicons} from '@expo/vector-icons';
 import { GestureDetector, Gesture, GestureHandlerRootView } from 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import BottomTabNavigator from './navigation/BottomTabNavigator';
 
 function HeadlineText(props){
   return(
@@ -118,50 +120,10 @@ export default function App() {
   
   
   return (
-    <GestureHandlerRootView style={styles.container}>
-      <GestureDetector gesture={tap}>
-
-      <View style={styles.container}>
-        <Ionicons
-          style={styles.icon}
-          name='checkmark-circle'
-          size={100}
-          color='green'
-        />
-        <Ionicons style={styles.icon} name='help' size={30} color='red'/>
-        <TouchableHighlight style={styles.button} onPress={() => console.log('Button 1 pressed')}>
-          <Text style={styles.label}>Button 1</Text>
-        </TouchableHighlight>
-        <TouchableHighlight style={styles.button} onPress={() => console.log('Button 2 pressed')}>
-          <Text style={styles.label}>Button 2</Text>
-        </TouchableHighlight>
-        <Headline text = 'Photo share!'/>
-        <BodyText text = "Press Button " />
-        <ImageHandler selectedImage={selectedImage} setSelectedImage={setSelectedImage}/>
-        <StatusBar style="auto" />
-        
-        <Likecounter/>
-
-        <Button 
-          title='clear'
-          onPress={clearImage}
-        />
-        <Message>Short message</Message> 
-        <Message>Slightly longer messages</Message> 
-            
-        <TextInput
-          style={styles.input}
-          placeholder='please enter name'
-          placeholderTextColor="blue"
-          defaultValue={state.txt}
-          onChangeText={updateText}
-          autoFocus={true}
-          autoCorrect={true}
-          />
-
-      </View>
-    </GestureDetector>
-    </GestureHandlerRootView>
+    <NavigationContainer>
+      <BottomTabNavigator/>
+    </NavigationContainer>
+    
   );
 }
 
@@ -235,3 +197,50 @@ const styles = StyleSheet.create({
     backgroundColor:'red'
   }
 });
+
+/*. //In the App()
+<GestureHandlerRootView style={styles.container}>
+      <GestureDetector gesture={tap}>
+
+      <View style={styles.container}>
+        <Ionicons
+          style={styles.icon}
+          name='checkmark-circle'
+          size={100}
+          color='green'
+        />
+        <Ionicons style={styles.icon} name='help' size={30} color='red'/>
+        <TouchableHighlight style={styles.button} onPress={() => console.log('Button 1 pressed')}>
+          <Text style={styles.label}>Button 1</Text>
+        </TouchableHighlight>
+        <TouchableHighlight style={styles.button} onPress={() => console.log('Button 2 pressed')}>
+          <Text style={styles.label}>Button 2</Text>
+        </TouchableHighlight>
+        <Headline text = 'Photo share!'/>
+        <BodyText text = "Press Button " />
+        <ImageHandler selectedImage={selectedImage} setSelectedImage={setSelectedImage}/>
+        <StatusBar style="auto" />
+        
+        <Likecounter/>
+
+        <Button 
+          title='clear'
+          onPress={clearImage}
+        />
+        <Message>Short message</Message> 
+        <Message>Slightly longer messages</Message> 
+            
+        <TextInput
+          style={styles.input}
+          placeholder='please enter name'
+          placeholderTextColor="blue"
+          defaultValue={state.txt}
+          onChangeText={updateText}
+          autoFocus={true}
+          autoCorrect={true}
+          />
+
+      </View>
+    </GestureDetector>
+    </GestureHandlerRootView>
+*/
